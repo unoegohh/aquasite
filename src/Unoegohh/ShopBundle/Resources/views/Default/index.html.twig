@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>Главная страница сайта</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS Style -->
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <!-- Color Skins -->
+    <link rel="stylesheet" href="/theme/css/skins/orange.css" name="skins">
+
+    <!-- Layout Style -->
+    <link rel="stylesheet" href="/theme/css/layout/wide.css" name="layout">
+
+    <!-- Style Switcher Box -->
+    <link rel="stylesheet" href="/theme/css/layout/switcher.css">
+
+    <!-- Small Icons -->
+    <link rel="stylesheet" href="/theme/css/icons.css">
+
+    <!-- Start JavaScript -->
+
+    <script src="/theme/js/jquery-1.7.2.min.js"></script> <!-- jQuery library -->
+    <script src="/theme/js/jquery.easing.1.3.min.js"></script> <!-- jQuery Easing -->
+    <script src="/theme/js/jquery-ui.min.js"></script> <!-- jQuery Ui -->
+    <script src="/theme/js/jquery.cookie.js"></script> <!-- jQuery cookie -->
+    <script src="/theme/js/jquery.uniform.min.js"></script> <!-- jQuery Uniform -->
+    <script src="/theme/js/ddsmoothmenu.js"></script> <!-- Nav Menu ddsmoothmenu -->
+    <script src="/theme/js/jquery.flexslider.js"></script> <!-- Flex Slider  -->
+    <script src="/theme/js/jquery.eislideshow.js"></script> <!-- Elastic Slider  -->
+    <script src="/theme/js/jquery.iconmenu.js"></script> <!-- Sliding Text and Icon Menu Style  -->
+    <script src="/theme/js/colortip.js"></script> <!-- Colortip Tooltip Plugin  -->
+    <script src="/theme/js/tytabs.js"></script> <!-- jQuery Plugin tytabs  -->
+    <script src="/theme/js/carousel.js"></script> <!-- jQuery Carousel  -->
+    <script src="/theme/js/jquery.prettyPhoto.js"></script> <!-- jQuery Prettyphoto  -->
+    <script src="/theme/js/jquery.isotope.min.js"></script> <!-- Isotope Filtering  -->
+    <script src="/theme/js/selectnav.js"></script> <!-- Responsive Navigation Menu by SelectNav -->
+    <script src="/theme/js/jquery.ui.totop.js"></script> <!-- UItoTop plugin  -->
+    <script src="/theme/js/custom.js"></script> <!-- Custom Js file for javascript in html -->
+    <script src="/theme/js/jquery.tweet.js"></script> <!-- jQuery Tweets -->
+    <script src="/theme/js/jflickrfeed.min.js"></script> <!-- jQuery Flickr -->
+    <script src="/theme/js/twitter-flickr-options.js"></script> <!-- jQuery Tweets Options -->
+    <script src="/theme/js/styleswitch.js"></script> <!-- Style Switcher -->
+
+    <!-- End JavaScript -->
+
+    <!--[if lt IE 9]>
+    <script src="/theme/js/html5.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="/theme/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="/theme/images/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/favicon/apple-touch-icon-114x114.png">
+
+</head>
+<body>
+
+<div id="wrap" class="boxed">
+
+<header>
+    <div class="container clearfix">
+
+        <div class="one-third column">
+            <div class="logo">
+                <a href="/">
+                    <img src="/theme/images/logo.png" alt="Crevision - Creative Template" />
+                </a>
+            </div>
+        </div><!-- End Logo -->
+
+        <div class="two-thirds column">
+            <nav id="menu" class="navigation">
+                {{ render(controller('UnoegohhShopBundle:Render:menu')) }}
+
+            </nav>
+        </div><!-- End Menu -->
+
+        <div class="sixteen columns"><hr /></div>
+
+    </div><!-- End Container -->
+</header><!-- <<< End Header >>> -->
+<div class="container clearfix">
+{% block main %}
+
+{% if banners %}
+<div id="slider">
+    <div class="container clearfix">
+
+        <div class="sixteen columns">
+
+            <div class="flex-container">
+                <div class="flexslider">
+                    <ul class="slides">
+                        {% for banner in banners %}
+                        <li>
+                            {% if banner.url %}
+                                <a href="#">
+                            {% endif %}
+                            <img src="{{ banner.getImageUrl }}">
+                            {% if banner.url %}
+                                </a>
+                            {% endif %}
+                            <p class="flex-caption"> <span>{{ banner.name }}</span>{{ banner.descr }}</p>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><!-- End Container -->
+</div><!-- End Slider -->
+{% endif %}
+
+<div class="container clearfix">
+
+{% if not app.user %}
+<div id="welcome">
+    <div class="sixteen columns">
+        <div class="qoute">
+            <div class="eleven columns omega">
+                <h2>Сдесь будет текс о отправке заявки</h2>
+                <p>на логин для тех кто еще не зарегался</p>
+            </div>
+            <div class="four columns alpha"><a href="{{ path("unoegohh_shop_contact") }}" class="link">Подать заявку</a></div>
+        </div>
+    </div>
+</div><!-- End Welcome -->
+{% endif %}
+<div class="recent-work gallery clearfix">
+
+    <div class="slidewrap" >
+
+        <div class="sixteen columns"> <h2 class="title">Recent Work <span class="line"></span></h2> </div>
+
+        <ul class="slidecontrols">
+            <li><a href="#sliderName" class="next">Next</a></li><li><a href="#sliderName" class="prev">Prev</a></li>
+        </ul>
+
+        <ul class="slider" id="sliderName">
+
+            <li class="slide">
+
+                <!-- item 1 -->
+                <div class="one-third column item">
+                    <div class="caption">
+                        <a href="single_project_1.html"><img src="/theme/images/img/thumbs/thumb-1.jpg" alt="" class="pic" />
+                            <span class="hover-effect link"></span></a>
+                    </div><!-- hover effect -->
+                    <h4><a href="single_project_1.html">MonsterUp</a></h4>
+                    <p>design ,graphic ,illustration</p>
+                </div>
+                <!-- End -->
+
+                <!-- item 2 -->
+                <div class="one-third column item">
+                    <div class="caption">
+                        <a href="/theme/images/img/thumbs/thumb-2.jpg" rel="prettyPhoto[gallery1]">
+                            <img src="/theme/images/img/thumbs/thumb-2.jpg" alt="" class="pic" />
+                            <span class="hover-effect zoom"></span></a>
+                    </div><!-- hover effect -->
+                    <h4><a href="single_project_1.html">MonsterUp</a></h4>
+                    <p>design ,graphic ,illustration</p>
+                </div>
+                <!-- End -->
+
+                <!-- item 3 -->
+                <div class="one-third column item">
+                    <div class="caption">
+                        <a href="single_project_1.html"><img src="/theme/images/img/thumbs/thumb-3.jpg" alt="" class="pic" />
+                            <span class="hover-effect link"></span></a>
+                    </div><!-- hover effect -->
+                    <h4><a href="single_project_1.html">MonsterUp</a></h4>
+                    <p>design ,graphic ,illustration</p>
+                </div>
+                <!-- End -->
+
+            </li><!-- End slide -->
+
+            <li class="slide">
+
+                <!-- item 4 -->
+                <div class="one-third column item">
+                    <div class="caption">
+                        <a href="single_project_1.html"><img src="/theme/images/img/thumbs/thumb-1.jpg" alt="" class="pic" />
+                            <span class="hover-effect link"></span></a>
+                    </div><!-- hover effect -->
+                    <h4><a href="single_project_1.html">MonsterUp</a></h4>
+                    <p>design ,graphic ,illustration</p>
+                </div>
+                <!-- End -->
+
+                <!-- item 5 -->
+                <div class="one-third column item">
+                    <div class="caption">
+                        <a href="/theme/images/img/thumbs/thumb-2.jpg" rel="prettyPhoto[gallery2]">
+                            <img src="/theme/images/img/thumbs/thumb-2.jpg" alt="" class="pic" />
+                            <span class="hover-effect zoom"></span></a>
+                    </div><!-- hover effect -->
+                    <h4><a href="single_project_1.html">MonsterUp</a></h4>
+                    <p>design ,graphic ,illustration</p>
+                </div>
+                <!-- End -->
+
+                <!-- item 6-->
+                <div class="one-third column item">
+                    <div class="caption">
+                        <a href="single_project_1.html"><img src="/theme/images/img/thumbs/thumb-3.jpg" alt="" class="pic" />
+                            <span class="hover-effect link"></span></a>
+                    </div><!-- hover effect -->
+                    <h4><a href="single_project_1.html">MonsterUp</a></h4>
+                    <p>design ,graphic ,illustration</p>
+                </div>
+                <!-- End -->
+
+            </li><!-- End slide -->
+
+        </ul>
+
+    </div><!-- End slidewrap -->
+
+</div><!-- End recent-work -->
+
+<div class="one-third column">
+
+    <h2 class="title">Our Services<span class="line"></span></h2>
+
+    <div id="accordion">
+        <h3><a href="#">Web Design</a></h3>
+        <div><p>Ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Nam quis cursus massa. Dapibus, turpis quis.</p></div>
+
+        <h3><a href="#">Branding</a></h3>
+        <div><p>Ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Nam quis cursus massa. Dapibus, turpis quis.</p></div>
+
+        <h3><a href="#">wordpress</a></h3>
+        <div><p>Ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Nam quis cursus massa. Dapibus, turpis quis.</p></div>
+
+    </div><!-- End accordion -->
+
+</div><!-- End our services -->
+
+<div class="one-third column">
+
+    <h2 class="title">Why Choose Us ?<span class="line"></span></h2>
+
+    <ul class="whyus">
+        <li>
+            <a href="about.html"><img src="/theme/images/img/whyus.jpg" alt="" class="border" /></a>
+            <p>Ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Nam quis cursus </p>
+            <span class="more2"><a href="about.html">more about us</a></span>
+        </li>
+    </ul>
+
+</div><!-- End choose us -->
+
+<div class="one-third column">
+
+
+
+    <div class="slidewrap2">
+
+        <h2 class="title">Recent Blog<span class="line"></span></h2>
+
+        <div class="recent-blog">
+            <div  class="recent-blog2">
+
+                <ul class="slider" id="sliderName2">
+
+                    <li class="slide">
+
+                        <div class=" blog-item vertical">
+                            <div class="date3"><span class="day">25</span><span class="month">AUG</span></div>
+                            <h3><a href="single_post.html">Start jozoor website</a></h3>
+                            <p>Start jozoor website by jozor we love design and more u can talk we about. </p>
+                            <span class="more"><a href="single_post.html">Read more</a></span>
+                        </div>
+                        <div class=" blog-item vertical">
+                            <div class="date3"><span class="day">25</span><span class="month">AUG</span></div>
+                            <h3><a href="single_post.html">Start jozoor website</a></h3>
+                            <p>Start jozoor website by jozor we love design and more u can talk we about. </p>
+                            <span class="more"><a href="single_post.html">Read more</a></span>
+                        </div>
+
+                    </li><!-- End slide -->
+
+                    <li class="slide">
+
+                        <div class=" blog-item vertical">
+                            <div class="date3"><span class="day">25</span><span class="month">AUG</span></div>
+                            <h3><a href="single_post.html">Start jozoor website</a></h3>
+                            <p>Start jozoor website by jozor we love design and more u can talk we about. </p>
+                            <span class="more"><a href="single_post.html">Read more</a></span>
+                        </div>
+                        <div class=" blog-item vertical">
+                            <div class="date3"><span class="day">25</span><span class="month">AUG</span></div>
+                            <h3><a href="single_post.html">Start jozoor website</a></h3>
+                            <p>Start jozoor website by jozor we love design and more u can talk we about. </p>
+                            <span class="more"><a href="single_post.html">Read more</a></span>
+                        </div>
+
+                    </li><!-- End slide -->
+
+                </ul>
+
+            </div>
+        </div>
+
+    </div><!-- End slidewrap -->
+
+</div><!-- End recent blog -->
+
+{% endblock %}
+<div class="clients clearfix">
+
+    <div class="sixteen columns">
+
+        <h2 class="title">Our Clients <span class="line"></span></h2>
+        <ul class="items">
+            <li><a href="#"><img src="/theme/images/img/clients/client-1.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="/theme/images/img/clients/client-2.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="/theme/images/img/clients/client-3.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="/theme/images/img/clients/client-4.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="/theme/images/img/clients/client-5.jpg" alt="" /></a></li>
+        </ul><!-- End items -->
+
+    </div>
+
+
+</div><!-- End clients -->
+
+
+</div><!-- <<< End Container >>> -->
+</div>
+
+<footer>
+    <div class="container">
+
+        <div class="four columns">
+            <div class="about">
+                <h3 class="title">About Us<span class="line"></span></h3>
+                <p>
+                    Consectetur adipiscing elit aeneane lorem lipsum, condimentum ultrices consequat eu, vehicula mauris lipsum adipiscing
+                    lipsum aenean orci lorem Asequat. <br /> lorem ipsum dolor lorem sit amet, consectetur adipiscing dolor .
+                </p>
+            </div>
+        </div><!-- End about -->
+
+        <div class="four columns">
+            <div class="tweets">
+                <h3 class="title">Latest tweets<span class="line"></span></h3>
+                <div class='tweet query footer'></div><!-- Tweets Code -->
+            </div>
+        </div><!-- End tweets -->
+
+        <div class="four columns">
+            <div class="flickr">
+                <h3 class="title">Flickr<span class="line"></span></h3>
+                <ul id="footer" class="thumbs"></ul> <!-- Flickr Code -->
+            </div>
+        </div><!-- End flickr -->
+
+        <div class="four columns">
+            <div class="subscribe">
+                <h3 class="title">Subcribe<span class="line"></span></h3>
+                <p>Subscribe to our e-mail newsletter to receive updates.</p>
+                <form action="#">
+                    <input type="text" class="mail" value="Enter your Email" onBlur="if(this.value == '') { this.value = 'Enter your Email'; }"
+                           onfocus="if(this.value == 'Enter your Email') { this.value = ''; }"/>
+                    <input type="submit" value="Submit" class="submit" />
+                </form>
+            </div>
+        </div><!-- End subscribe -->
+
+        <div class="sixteen columns"><hr class="bottom" /></div>
+
+        <div class="eight columns"><span class="copyright">
+      © Copyright 2012 <a href="index.html">Crevision</a>. All Rights Reserved. by 
+      <a href="http://jozoor.com/" target="_blank" data="Jozoor Team">jozoor</a></span></div>
+
+    </div><!-- End container -->
+</footer><!-- <<< End Footer >>> -->
+
+</div><!-- End wrap -->
+
+</body>
+</html>

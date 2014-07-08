@@ -1,0 +1,104 @@
+{% extends "UnoegohhShopBundle:Default:index.html.twig" %}
+
+{% block main %}
+    <section id="main">
+        <div class="container_12">
+            <div id="content" class="grid_9">
+                <h1 class="page_title">{{ product.name }}</h1>
+
+                <div class="product_page">
+                    <div class="grid_4 img_slid" id="products">
+                        {% if product.sale %}
+                            <img class="sale" src="/theme/images/sale.png" alt="Sale"/>
+                        {% endif %}
+                        <div class="preview slides_container">
+                            <div class="prev_bg">
+                                <a class="jqzoom" rel="gal1" href="{{ product.photos[0].url }}">
+                                    <img src="{{ product.photos[0].url }}" style="width: 100%" title="" alt=""/>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- .prev -->
+
+                        <ul class="pagination clearfix" id="thumblist">
+                            {% for photo in product.photos %}
+                                <li><a {% if loop.index == 1 %}class="zoomThumbActive"
+                                       {% endif %}href='javascript:void(0);'
+                                       rel="{gallery: 'gal1', smallimage: '{{ photo.url }}',largeimage: '{{ photo.url }}'}"><img
+                                                src='{{ photo.url }}' alt=""></a></li>
+
+                            {% endfor %}
+                        </ul>
+
+                        <div class="next_prev">
+                            <a id="img_prev" class="arows" href="#"><span>Prev</span></a>
+                            <a id="img_next" class="arows" href="#"><span>Next</span></a>
+                        </div>
+                        <!-- . -->
+                    </div>
+                    <!-- .grid_4 -->
+
+                    <div class="grid_5">
+                        <div class="entry_content">
+                            <p>{{ product.description | nl2br }}</p>
+
+                            <div class="ava_price">
+
+                                <div class="price">
+                                    {% if product.getSalePrice %}
+                                        <div class="price_old">{{ product.getSalePrice }} руб</div>
+                                    {% endif %}
+                                    <div class="price_new">{{ product.price }} руб</div>
+                                </div>
+                                <!-- .price -->
+                            </div>
+                            <!-- .ava_price -->
+
+                            <div class="block_cart">
+                                <div class="cart">
+                                    <a href="#"
+                                       ng-click="addToCart({{ product.id }}, {{ product.price }},count,'{{ product.name }}', '{{ product.photos[0].url }}')"
+                                       class="bay">В корзину</a>
+                                    <input type="text" ng-model="count" name="" class="number" value="1"/>
+                                    <span>Кол-во:</span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <!-- .block_cart -->
+                        </div>
+                        <!-- .entry_content -->
+
+                    </div>
+                    <!-- .grid_5 -->
+
+                    <div class="clear"></div>
+
+
+                </div>
+                <!-- .product_page -->
+                <div class="clear"></div>
+
+            </div>
+            <!-- #content -->
+
+            <div id="sidebar" class="grid_3">
+                <aside id="categories_nav">
+                    <h3>Категории</h3>
+
+                    <nav class="left_menu">
+                        {{ render(controller('UnoegohhShopBundle:Render:categories', {'name':category.name})) }}
+
+                    </nav>
+                    <!-- .left_menu -->
+                </aside>
+                <!-- #categories_nav -->
+
+            </div>
+            <!-- .sidebar -->
+
+            <div class="clear"></div>
+
+        </div>
+        <!-- .container_12 -->
+    </section>
+{% endblock %}

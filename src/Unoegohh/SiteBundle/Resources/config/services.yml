@@ -1,0 +1,7 @@
+parameters:
+#    unoegohh_site.example.class: Unoegohh\SiteBundle\Example
+
+services:
+#    unoegohh_site.example:
+#        class: %unoegohh_site.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,57 @@
+{% extends "UnoegohhAdminBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="content-header">
+        <div class="header-section">
+            <h1>
+                Редактирование заказа
+            </h1>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li><a href="{{ path("unoegohh_admin_homepage") }}">Главная</a></li>
+        <li><a href="{{ path("unoegohh_admin_orders") }}">Заказы</a></li>
+        <li>Редактирование</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-6">
+            {% for i in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="fa fa-check-circle"></i> {{ i }}</h4>
+                </div>
+            {% endfor %}
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Заказ от {{ item.date_created | date ('d.m.y') }}</strong></h2>
+                </div>
+                {% include "UnoegohhAdminBundle:Order:form.html.twig" with {"form" : form} %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Товары</strong></h2>
+                </div>
+                <table class="table">
+                    <tr>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Кол-во</th>
+                    </tr>
+                    {% for i in order.items %}
+                        <tr>
+                            <td><a href="{{ path('unoegohh_admin_food_item_edit', {"id": i.id}) }}">{{ i.name }}</a></td>
+                            <td>{{ i.price }} руб</td>
+                            <td>{{ i.count }} </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td class="text-right" colspan="2">Итого:</td>
+                        <td><b>{{ item.totalPrice }}</b> руб</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

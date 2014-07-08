@@ -1,0 +1,88 @@
+{% extends "UnoegohhAdminBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="content-header">
+        <div class="header-section">
+            <h1>
+                Настройки контактной формы<br>
+            </h1>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li><a href="{{ path("unoegohh_admin_homepage") }}">Главная</a></li>
+        <li>Настройки контактной формы</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-12">
+            {% for i in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="fa fa-check-circle"></i> {{ i }}</h4>
+                </div>
+            {% endfor %}
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Параметры</strong></h2>
+                </div>
+                <form method="post" class="form-horizontal form-bordered">
+                    {{ form_widget(form._token) }}
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-email">Email</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-password">Телефон</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-password">Адресс</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-password">Рабочие часы</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.workHours, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-password">Описание</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.descr, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-password">Координаты по X</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.mapX, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-password">Координаты по Y</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.mapY, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group form-actions">
+                        <div class="col-md-9 col-md-offset-3">
+                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-user"></i> Сохранить
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

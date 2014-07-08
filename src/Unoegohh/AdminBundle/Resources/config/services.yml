@@ -1,0 +1,10 @@
+parameters:
+#    unoegohh_admin.example.class: Unoegohh\AdminBundle\Example
+
+services:
+   unoegohh.admin_bundle.imgur_upload:
+      class: Unoegohh\AdminBundle\Service\ImgurUploadService
+      arguments:
+        entityManager: "@doctrine.orm.entity_manager"
+        container: "@service_container"
+        imgur_key: %imgur_key%

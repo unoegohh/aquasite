@@ -1,0 +1,162 @@
+{% extends "UnoegohhShopBundle:Default:index.html.twig" %}
+{% block main %}
+    <section id="main">
+        <div class="container_12">
+            <div id="content" class="grid_9">
+                <h1 class="page_title">{% if category.name %}{{ category.name }}{% else %}Все товары{% endif %}</h1>
+
+                {#<dislidions">#}
+                    {#&#123;&#35;<div class="grid-list">&#35;&#125;#}
+                        {#&#123;&#35;<a class="grid curent" href="/"><span>img</span></a>&#35;&#125;#}
+                        {#&#123;&#35;<a class="list" href="/catalog_list.html"><span>img</span></a>&#35;&#125;#}
+                    {#&#123;&#35;</div>&#35;&#125;#}
+                    {#<!-- .grid-list -->#}
+
+                    {#&#123;&#35;<div class="show">&#35;&#125;#}
+                    {#&#123;&#35;<span>Show</span>&#35;&#125;#}
+                    {#&#123;&#35;<select title="Show" class="selectBox" style="display: none;">&#35;&#125;#}
+                    {#&#123;&#35;<option>1</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>2</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>3</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>4</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>5</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>6</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>7</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>8</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>9</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>10</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>11</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>12</option>&#35;&#125;#}
+                    {#&#123;&#35;</select><a class="selectBox selectBox-dropdown" style="display: inline-block;" title="Show" tabindex="0"><span class="selectBox-label">1</span><span class="selectBox-arrow"></span></a>&#35;&#125;#}
+
+                    {#&#123;&#35;<span class="per-page">per page</span>&#35;&#125;#}
+                    {#&#123;&#35;</div><!-- .show -->&#35;&#125;#}
+
+                    {#&#123;&#35;<div class="sort">&#35;&#125;#}
+                    {#&#123;&#35;<span class="sort-by">Sort By</span>&#35;&#125;#}
+                    {#&#123;&#35;<select class="selectBox" style="display: none;">&#35;&#125;#}
+                    {#&#123;&#35;<option>Position</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>Price</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>Rating</option>&#35;&#125;#}
+                    {#&#123;&#35;<option>Name</option>&#35;&#125;#}
+                    {#&#123;&#35;</select><a class="selectBox selectBox-dropdown" style="display: inline-block;" title="" tabindex="0"><span class="selectBox-label">Position</span><span class="selectBox-arrow"></span></a>&#35;&#125;#}
+
+                    {#&#123;&#35;<a class="sort_up" href="#">↑</a>&#35;&#125;#}
+                    {#&#123;&#35;</div><!-- .sort -->&#35;&#125;#}
+                {#</div>#}
+                <!-- .options -->
+
+                <div class="grid_product">
+                    {% for product in products.items %}
+                        <div class="grid_3 product">
+                            <div class="prev">
+                                <a href="{{ path('unoegohh_shop_item', {'id': product.id}) }}"><img src="{{ product.photos[0].url }}" alt="" title=""></a>
+                            </div>
+                            <!-- .prev -->
+                            <h3 class="title">{{ product.name }}</h3>
+
+                            <div class="cart">
+                                <div class="price">
+                                    <div class="vert">
+                                        <div class="price_new">{{ product.price }} руб</div>
+                                        {% if product.getSalePrice %}
+                                            <div class="price_old">{{ product.getSalePrice }} руб</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {#<a href="#" class="obn"></a>#}
+                                {#<a href="#" class="like"></a>#}
+                                <a href="#" class="bay"  ng-click="addToCart({{ product.id }}, {{ product.price }},count,'{{ product.name }}', '{{ product.photos[0].url }}')" ></a>
+                            </div>
+                            <!-- .cart -->
+                        </div>
+                    {% endfor %}
+                    <!-- .grid_3 -->
+
+                    <div class="clear"></div>
+                </div>
+                <!-- .grid_product -->
+
+                <div class="clear"></div>
+                {#{% if products['total'] > 1 %}#}
+                    <div class="pagination">
+                        {% set current_filters = { "query": app.request.get('query')} %}
+                        {% set extremePagesLimit = 2 %}
+                        {% set currentPage = products['page'] %}
+                        {% set total =  products['total'] %}
+                        {% set lastPage =  products['total'] %}
+                        {% if app.request.get('query') %}
+                            {% set paginationPath = 'unoegohh_shop_search' %}
+                        {% else %}
+                            {% set paginationPath = 'unoegohh_shop_search' %}
+                        {% endif %}
+                        {% set nearbyPagesLimit = 2 %}
+
+                        <ul>
+
+                            {#<li class="prev"><span>←</span></li>#}
+                            {% for i in range(1, extremePagesLimit) if ( i < currentPage-nearbyPagesLimit ) %}
+                                <li><a href="?{{ current_filters|merge({page: i})|url_encode }}">{{ i }}</a></li>
+                            {% endfor %}
+
+                            {% if extremePagesLimit + 1 < currentPage - nearbyPagesLimit %}
+                                <li><span class="sep-dots">...</span></li>
+                            {% endif %}
+
+                            {% for i in range(currentPage-nearbyPagesLimit, currentPage-1) if ( i > 0 ) %}
+                            <li><a href="?{{ current_filters|merge({page: i})|url_encode }}">{{ i }}</a>
+                                {% endfor %}
+                            <li class="curent"><span>{{ currentPage }}</span></li>
+
+                            {% if currentPage < lastPage %}
+                                {% for i in range(currentPage+1, total) %}
+                                    {% if loop.index <= nearbyPagesLimit and i <= lastPage  %}
+                                        <li><a href="?{{ current_filters|merge({page: i})|url_encode }}">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if  (lastPage - extremePagesLimit) > (currentPage + nearbyPagesLimit ) %}
+                                    <li><span class="sep-dots">...</span></li>
+                                {% endif %}
+
+                                {% for i in range(lastPage-extremePagesLimit+1, lastPage) if ( i > currentPage+nearbyPagesLimit ) %}
+                                    <li><a href="?{{ current_filters|merge({page: i})|url_encode }}">{{ i }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                {#{% endif %}#}
+                {#<div class="pagination">#}
+                    {#<ul>#}
+                        {#<li class="prev"><span>←</span></li>#}
+                        {#<li class="curent"><a href="#">1</a></li>#}
+                        {#<li><a href="#">2</a></li>#}
+                        {#<li><a href="#">3</a></li>#}
+                        {#<li><a href="#">4</a></li>#}
+                        {#<li><a href="#">5</a></li>#}
+                        {#<li><span>...</span></li>#}
+                        {#<li><a href="#">100</a></li>#}
+                        {#<li class="next"><a href="#">→</a></li>#}
+                    {#</ul>#}
+                {#</div>#}
+                <br/>
+                <!-- .pagination -->
+            </div>
+
+        <div id="sidebar" class="grid_3">
+            <aside id="categories_nav">
+                <h3>Категории</h3>
+
+                <nav class="left_menu">
+                    {{ render(controller('UnoegohhShopBundle:Render:categories', {'name':category.name})) }}
+                </nav>
+                <!-- .left_menu -->
+            </aside>
+            <!-- #categories_nav -->
+
+            <!-- #newsletter_signup -->
+        </div>
+        </div>
+
+    </section>
+{% endblock %}

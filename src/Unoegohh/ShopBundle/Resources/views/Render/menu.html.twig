@@ -1,0 +1,24 @@
+
+
+<ul id="nav">
+
+    {% set usera = app.getUser() %}
+    {% for item in menu %}
+
+    <li><a href="{% if item.staticPage %}/{{ item.staticPage.url }}{% elseif item.url %}{{ item.url }}{% else %}/{% endif %}" >{{ item.name }}</a>
+
+
+        {% if item.child.count > 0 %}
+            <ul class="sub">
+                {% for child in item.child %}
+                    {% if not child.getShowToUser or child.getShowToUser and usera %}
+                        <li>
+                            <a href="{% if child.staticPage %}/{{ child.staticPage.url }}{% else %}{{ child.url }}{% endif %}">{{ child.name }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>

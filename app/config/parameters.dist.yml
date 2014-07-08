@@ -1,0 +1,7 @@
+parameters:
+    secret: ThisTokenIsNotSoSecretChangeIt
+    imgur_key: f5592bd9358b539
+    items_per_page: 20
+    mail_to: 1@gmail.com
+    mail_from: 1@gmail.com
+    mail_name: 1
