@@ -1,12 +1,6 @@
-unoegohh_site:
-    resource: "@UnoegohhSiteBundle/Resources/config/routing.yml"
-    prefix:   /
-
-
 unoegohh_admin:
     resource: "@UnoegohhAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
-
 
 unoegohh_entities:
     resource: "@UnoegohhEntitiesBundle/Resources/config/routing.yml"

@@ -35,6 +35,16 @@ class CustomerRequest
     /**
      * @ORM\Column(type="string")
      */
+    protected $town;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $companyName;
+
+    /**
+     * @ORM\Column(type="string")
+     */
     protected $phone;
 
     /**
@@ -179,5 +189,38 @@ class CustomerRequest
     {
         return $this->password;
     }
+
+    /**
+     * @param mixed $companyName
+     */
+    public function setCompanyName($companyName)
+    {
+        $this->companyName = $companyName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompanyName()
+    {
+        return $this->companyName;
+    }
+
+    /**
+     * @param mixed $town
+     */
+    public function setTown($town)
+    {
+        $this->town = $town;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTown()
+    {
+        return $this->town;
+    }
+
 
 }

@@ -49,6 +49,15 @@
                             {{ form_widget(form.phone, {'attr' :{'class' : 'text'}}) }}
                         </div><!-- End Box -->
 
+                        <div class="form-box">
+                            <label>Город <small>(обязательно)</small></label>
+                            {{ form_widget(form.town, {'attr' :{'class' : 'text'}}) }}
+                        </div><!-- End Box -->
+                        <div class="form-box">
+                            <label>Наименование организации </label>
+                            {{ form_widget(form.companyName, {'attr' :{'class' : 'text'}}) }}
+                        </div><!-- End Box -->
+
                         <div class="form-box big">
                             <label>Сообщение <small>(обязательно)</small> </label>
                             {{ form_widget(form.description) }}

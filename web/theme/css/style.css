@@ -147,7 +147,11 @@ header {
 }
 
 .logo {
-	margin:28px 0;
+    margin: 8px 0;
+}
+
+.logo img{
+    height: 80px;
 }
 
 .selectnav { 

@@ -18,12 +18,12 @@ class ShopController extends Controller
 
         $category = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->findOneBy(array('engName' => $categoryName));
 //        $banners  = $em->getRepository("UnoegohhEntitiesBundle:MainBanner")->findBy(array('active' => true), array('orderNum' => 'DESC'));
-
+        $categories = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->findAll();
         $page = $request->query->get('page',1);
-        $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->getProductsByCategory($category, $page, 21 );
-        $products['page'] = $page;
+        $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findAll();
         return $this->render('UnoegohhShopBundle:Item:category.html.twig', array(
             'category' => $category,
+            'categories' => $categories,
             'products' => $products
         ));
     }
