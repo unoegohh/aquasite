@@ -76,7 +76,7 @@
         <div class="one-third column">
             <div class="logo">
                 <a href="/">
-                    <img src="/logo.png" alt="Crevision - Creative Template" height="80px">
+                    <img src="{{ pref().logo }}" alt="Crevision - Creative Template" height="80px">
                 </a>
             </div>
         </div><!-- End Logo -->
@@ -113,7 +113,10 @@
                             {% if banner.url %}
                                 </a>
                             {% endif %}
-                            <p class="flex-caption"> <span>{{ banner.name }}</span>{{ banner.descr }}</p>
+
+                            {% if banner.showDesc %}
+                                <p class="flex-caption"> <span>{{ banner.name }}</span>{{ banner.descr }}</p>
+                            {% endif %}
                         </li>
                         {% endfor %}
                     </ul>

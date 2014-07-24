@@ -14,6 +14,7 @@ class MainBannerForm extends AbstractType
             ->add('name')
             ->add('url')
             ->add('descr')
+            ->add('showDesc')
             ->add('active')
             ->add('image_url')
             ->add('orderNum')

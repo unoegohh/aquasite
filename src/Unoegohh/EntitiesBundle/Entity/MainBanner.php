@@ -33,6 +33,11 @@ class MainBanner
     protected $descr;
 
     /**
+     * @ORM\Column(type="boolean" , nullable=true)
+     */
+    protected $showDesc;
+
+    /**
      * @ORM\Column(type="string")
      */
     protected $image_url;
@@ -174,6 +179,23 @@ class MainBanner
     {
         return $this->descr;
     }
+
+    /**
+     * @param mixed $showDesc
+     */
+    public function setShowDesc($showDesc)
+    {
+        $this->showDesc = $showDesc;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShowDesc()
+    {
+        return $this->showDesc;
+    }
+
 
 
 }

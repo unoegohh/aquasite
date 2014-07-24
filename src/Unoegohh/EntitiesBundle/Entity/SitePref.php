@@ -18,78 +18,9 @@ class SitePref
     protected $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
-    protected $phone;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $email;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $address;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $sign;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $active;
-
-    /**
-     * @param mixed $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-
-    /**
-     * @param mixed $active
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActive()
-    {
-        return $this->active;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
+    protected $logo;
 
     /**
      * @param mixed $id
@@ -108,35 +39,19 @@ class SitePref
     }
 
     /**
-     * @param mixed $phone
+     * @param mixed $logo
      */
-    public function setPhone($phone)
+    public function setLogo($logo)
     {
-        $this->phone = $phone;
+        $this->logo = $logo;
     }
 
     /**
      * @return mixed
      */
-    public function getPhone()
+    public function getLogo()
     {
-        return $this->phone;
-    }
-
-    /**
-     * @param mixed $sign
-     */
-    public function setSign($sign)
-    {
-        $this->sign = $sign;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSign()
-    {
-        return $this->sign;
+        return $this->logo;
     }
 
 

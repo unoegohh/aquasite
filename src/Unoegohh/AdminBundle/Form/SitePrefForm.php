@@ -11,10 +11,7 @@ class SitePrefForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('phone')
-            ->add('email')
-            ->add('address')
-            ->add('sign')
+            ->add('logo')
         ;
     }
 

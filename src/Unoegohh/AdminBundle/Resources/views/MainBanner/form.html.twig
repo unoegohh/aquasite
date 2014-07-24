@@ -40,7 +40,14 @@
         <label class="col-md-3 control-label" for="example-hf-password">Включен</label>
 
         <div class="col-md-9">
-            {{ form_widget(form.active, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.active) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Показывать описание</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.showDesc) }}
         </div>
     </div>
     <div class="form-group form-actions">
