@@ -30,11 +30,6 @@ class AddPrefCommand extends ContainerAwareCommand
             $output->writeln('Already exists!');
         }else{
             $pref = new SitePref();
-            $pref->setPhone("Change Me!!!");
-            $pref->setEmail("Change Me!!!");
-            $pref->setSign("Change Me!!!");
-            $pref->setAddress("Change Me!!!");
-            $pref->setActive(true);
 
             $em->persist($pref);
             $em->flush();
