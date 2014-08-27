@@ -15,7 +15,7 @@ class StaticPageForm extends AbstractType
             ->add('active', null, array('required' => false))
             ->add('url', null, array('required' => false))
             ->add('show_to_user', null, array('required' => false))
-            ->add('text', 'textarea')
+            ->add('text', 'textarea', array('required' => true))
         ;
     }
 
