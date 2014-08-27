@@ -12,7 +12,7 @@ class NewsForm extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('descr')
+            ->add('descr', 'textarea')
             ->add('small_descr')
         ;
     }
