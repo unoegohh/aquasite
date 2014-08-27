@@ -161,3 +161,25 @@ unoegohh_admin_user_remove:
 unoegohh_admin_user_remove_ok:
     path:     /user/remove/{id}/ok
     defaults: { _controller: UnoegohhAdminBundle:User:removeOk }
+
+#news
+
+unoegohh_admin_news:
+    path:     /news
+    defaults: { _controller: UnoegohhAdminBundle:News:index }
+
+unoegohh_admin_news_create:
+    path:     /news/create
+    defaults: { _controller: UnoegohhAdminBundle:News:create }
+
+unoegohh_admin_news_edit:
+    path:     /news/edit/{id}
+    defaults: { _controller: UnoegohhAdminBundle:News:edit }
+
+unoegohh_admin_news_remove:
+    path:     /news/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:News:remove }
+
+unoegohh_admin_news_remove_ok:
+    path:     /news/remove/{id}/ok
+    defaults: { _controller: UnoegohhAdminBundle:News:removeOk }
