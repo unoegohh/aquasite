@@ -15,6 +15,7 @@ class ItemCategoryForm extends AbstractType
             ->add('engName')
             ->add('descr', 'textarea')
             ->add('child_id')
+            ->add('orderNum')
         ;
     }
 

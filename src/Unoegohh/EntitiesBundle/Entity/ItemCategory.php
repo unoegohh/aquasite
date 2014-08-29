@@ -33,6 +33,11 @@ class ItemCategory
     protected $descr;
 
     /**
+     * @ORM\Column(type="integer",nullable="true")
+     */
+    protected $orderNum;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Unoegohh\EntitiesBundle\Entity\ItemCategory", inversedBy="child")
      * @ORM\JoinColumn(name="child_id", referencedColumnName="id")
      **/
@@ -170,5 +175,22 @@ class ItemCategory
     {
         return $this->engName;
     }
+
+    /**
+     * @param mixed $orderNum
+     */
+    public function setOrderNum($orderNum)
+    {
+        $this->orderNum = $orderNum;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderNum()
+    {
+        return $this->orderNum;
+    }
+
 
 }
