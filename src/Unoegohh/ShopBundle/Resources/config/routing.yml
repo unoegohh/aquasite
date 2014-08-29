@@ -22,6 +22,15 @@ unoegohh_shop_cart:
     path:     /cart
     defaults: { _controller: UnoegohhShopBundle:Shop:cart}
 
+
+unoegohh_shop_news:
+    path:     /news
+    defaults: { _controller: UnoegohhShopBundle:News:index}
+
+unoegohh_shop_news_item:
+    path:     /news/{id}
+    defaults: { _controller: UnoegohhShopBundle:News:item}
+
 unoegohh_shop_cash_order:
     path:     /order/cash
     defaults: { _controller: UnoegohhShopBundle:Shop:cashPayment}

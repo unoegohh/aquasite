@@ -33,7 +33,7 @@ class ItemCategory
     protected $descr;
 
     /**
-     * @ORM\Column(type="integer",nullable="true")
+     * @ORM\Column(type="integer",nullable=true)
      */
     protected $orderNum;
 
