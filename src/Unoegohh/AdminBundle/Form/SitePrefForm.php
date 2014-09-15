@@ -12,6 +12,7 @@ class SitePrefForm extends AbstractType
     {
         $builder
             ->add('logo')
+            ->add('logoSize')
         ;
     }
 

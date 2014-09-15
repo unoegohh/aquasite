@@ -23,6 +23,11 @@ class SitePref
     protected $logo;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $logoSize;
+
+    /**
      * @param mixed $id
      */
     public function setId($id)
@@ -52,6 +57,22 @@ class SitePref
     public function getLogo()
     {
         return $this->logo;
+    }
+
+    /**
+     * @param mixed $logoSize
+     */
+    public function setLogoSize($logoSize)
+    {
+        $this->logoSize = $logoSize;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLogoSize()
+    {
+        return $this->logoSize;
     }
 
 
