@@ -19,13 +19,13 @@
     <div class="eleven columns bottom">
         <h2 class="title bottom-2">Продукция<span class="line"></span></h2>
         <table>
-            <tr>
                 {% for item in products %}
+            <tr>
                     <td><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}">{{ item.name }}</a></td>
                     <td><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}" class="button small color">Подробнее</a></td>
 
-                {% endfor %}
             </tr>
+                {% endfor %}
         </table>
     </div>
     <div class="clearfix"></div>

@@ -17,10 +17,12 @@ class ShopController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $category = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->findOneBy(array('engName' => $categoryName));
-//        $banners  = $em->getRepository("UnoegohhEntitiesBundle:MainBanner")->findBy(array('active' => true), array('orderNum' => 'DESC'));
         $categories = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->findAll();
-        $page = $request->query->get('page',1);
-        $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findAll();
+        if(!$category){
+            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true));
+        }else{
+            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true));
+        }
         return $this->render('UnoegohhShopBundle:Item:category.html.twig', array(
             'category' => $category,
             'categories' => $categories,
