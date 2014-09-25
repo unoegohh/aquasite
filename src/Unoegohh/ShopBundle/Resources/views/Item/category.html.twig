@@ -22,6 +22,7 @@
                 {% for item in products %}
             <tr>
                     <td><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}">{{ item.name }}</a></td>
+                    <td>{{ item.CategoryId.name }}</td>
                     <td><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}" class="button small color">Подробнее</a></td>
 
             </tr>
