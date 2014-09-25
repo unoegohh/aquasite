@@ -1,127 +1,101 @@
 
-<!DOCTYPE html>
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
+<div id="login">
+    <div id="triangle"></div>
+    <h1>Авторизиция</h1>
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-    <title>Вход на сайт</title>
-
-    <meta name="description" content="ProUI is a Responsive Bootstrap Admin Template created by pixelcave and published on Themeforest.">
-    <meta name="author" content="pixelcave">
-    <meta name="robots" content="noindex, nofollow">
-
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
-
-    <!-- Icons -->
-    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" href="/admin/img/favicon.ico">
-    <link rel="apple-touch-icon" href="/admin/img/icon57.png" sizes="57x57">
-    <link rel="apple-touch-icon" href="/admin/img/icon72.png" sizes="72x72">
-    <link rel="apple-touch-icon" href="/admin/img/icon76.png" sizes="76x76">
-    <link rel="apple-touch-icon" href="/admin/img/icon114.png" sizes="114x114">
-    <link rel="apple-touch-icon" href="/admin/img/icon120.png" sizes="120x120">
-    <link rel="apple-touch-icon" href="/admin/img/icon144.png" sizes="144x144">
-    <link rel="apple-touch-icon" href="/admin/img/icon152.png" sizes="152x152">
-    <!-- END Icons -->
-
-    <!-- Stylesheets -->
-    <!-- Bootstrap is included in its original form, unaltered -->
-    <link rel="stylesheet" href="/admin/css/bootstrap.min.css">
-
-    <!-- Related styles of various icon packs and plugins -->
-    <link rel="stylesheet" href="/admin/css/plugins.css">
-
-    <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
-    <link rel="stylesheet" href="/admin/css/main.css">
-
-    <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
-
-    <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
-    <link rel="stylesheet" href="/admin/css/themes.css">
-    <!-- END Stylesheets -->
-
-    <!-- Modernizr (browser feature detection library) & Respond.js (Enable responsive CSS code on browsers that don't support it, eg IE8) -->
-    <script src="/admin/js/vend/modernizr-2.7.1-respond-1.4.2.min.js"></script>
-</head>
-<body>
-<!-- Login Background -->
-<div id="login-background">
-    <!-- For best results use an image with a resolution of 2560x400 pixels (prefer a blurred image for smaller file size) -->
-    <img src="/admin/img/placeholders/headers/login_header.jpg" alt="Login Background" class="animation-pulseSlow">
+        <input type="text"  required="required" placeholder="Login" name="_username"/>
+        <input type="password"  required="required" placeholder="Password" name="_password" />
+        <input type="submit" value="Log in" />
+    </form>
 </div>
-<!-- END Login Background -->
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
-<!-- Login Container -->
-<div id="login-container" class="animation-fadeIn">
-    <!-- Login Title -->
-    <div class="login-title text-center">
-        <h1><i class="gi gi-flash"></i> <strong>Вход на сайт</strong><br><small>Пожалуйста <strong>Авторизируйтесь</strong></small></h1>
-    </div>
-    <!-- END Login Title -->
+    *{margin:0;padding:0;}
 
-    <!-- Login Block -->
-    <div class="block push-bit">
-        <!-- Login Form -->
-        <form action="{{ path("fos_user_security_check") }}" method="post" id="form-login" class="form-horizontal form-bordered form-control-borderless">
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    body{
+        background:#567;
+        font-family:'Open Sans',sans-serif;
+    }
 
-            <div class="form-group">
-                <div class="col-xs-12">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+    .button{
+        width:100px;
+        background:#3399cc;
+        display:block;
+        margin:0 auto;
+        margin-top:1%;
+        padding:10px;
+        text-align:center;
+        text-decoration:none;
+        color:#fff;
+        cursor:pointer;
+        transition:background .3s;
+        -webkit-transition:background .3s;
+    }
 
-                        <input type="text" id="login-email" name="_username" required="required"  class="form-control input-lg" placeholder="Login" value="{{ username }}">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-12">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
+    .button:hover{
+        background:#2288bb;
+    }
 
-                        <input type="password" id="login-password"  required="required" name="_password" class="form-control input-lg" placeholder="Password">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group form-actions">
-                <div class="col-xs-4">
-                    <label class="switch switch-primary" data-toggle="tooltip" title="ЗАпомнить меня?">
-                        <input type="checkbox" id="login-remember-me" name="_remember_me" checked>
-                        <span></span>
-                    </label>
-                </div>
-                <div class="col-xs-8 text-right">
-                    <button type="submit" name="_submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Войти</button>
-                </div>
-            </div>
-        </form>
-        <!-- END Login Form -->
+    #login{
+        width:400px;
+        margin:0 auto;
+        margin-top:8px;
+        margin-bottom:2%;
+        transition:opacity 1s;
+        -webkit-transition:opacity 1s;
+    }
 
+    #triangle{
+        width:0;
+        border-top:12x solid transparent;
+        border-right:12px solid transparent;
+        border-bottom:12px solid #3399cc;
+        border-left:12px solid transparent;
+        margin:0 auto;
+    }
 
-        <!-- END Register Form -->
-    </div>
-    <!-- END Login Block -->
+    #login h1{
+        background:#3399cc;
+        padding:20px 0;
+        font-size:140%;
+        font-weight:300;
+        text-align:center;
+        color:#fff;
+    }
 
-    <!-- Footer -->
-    <footer class="text-muted text-center">
-        <small><span id="year-copy"></span> &copy; <a href="http://goo.gl/TDOSuC" target="_blank">ProUI 2.0</a></small>
-    </footer>
-    <!-- END Footer -->
-</div>
-<!-- END Login Container -->
+    form{
+        background:#f0f0f0;
+        padding:6% 4%;
+    }
 
-<!-- Include Jquery library from Google's CDN but if something goes wrong get Jquery from local file (Remove 'http:' if you have SSL) -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>!window.jQuery && document.write(decodeURI('%3Cscript src="js/vend/jquery-1.11.0.min.js"%3E%3C/script%3E'));</script>
+    input[type="text"],input[type="password"]{
+        width:100%;
+        background:#fff;
+        margin-bottom:4%;
+        border:1px solid #ccc;
+        padding:4%;
+        font-family:'Open Sans',sans-serif;
+        font-size:95%;
+        color:#555;
+    }
 
-<!-- Bootstrap.js, Jquery plugins and Custom JS code -->
-<script src="/admin/js/vend/bootstrap.min.js"></script>
-<script src="/admin/js/plugins.js"></script>
-<script src="/admin/js/app.js"></script>
+    input[type="submit"]{
+        width:100%;
+        background:#3399cc;
+        border:0;
+        padding:4%;
+        font-family:'Open Sans',sans-serif;
+        font-size:100%;
+        color:#fff;
+        cursor:pointer;
+        transition:background .3s;
+        -webkit-transition:background .3s;
+    }
 
-<!-- Load and execute javascript code used only in this page -->
-<script src="/admin/js/pages/login.js"></script>
-<script>$(function(){ Login.init(); });</script>
-</body>
-</html>
+    input[type="submit"]:hover{
+        background:#2288bb;
+    }
+</style>

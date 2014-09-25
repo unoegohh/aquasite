@@ -1,41 +1,33 @@
 {% extends "UnoegohhShopBundle:Default:index.html.twig" %}
 {% block main %}
 
-    <div class="sixteen columns"> <h1 class="page-title">Наша продукция<span class="line"></span></h1> </div>
     <!-- Page Title -->
 
-    <div class="sixteen columns">
-        <div class="title clearfix" id="options">
-            <ul id="filters" class="option-set clearfix" data-option-key="filter">
-                <li><a href="{{ path('unoegohh_shop_category') }}" data-option-value="*" {% if not category %}class="selected"{% endif %}>Все</a></li>
-                {% for cat in categories %}
-                    <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}" {% if category.id == cat.id %}class="selected"{% endif %} data-option-value=".{{ cat.EngName }}">{{ cat.name }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div> <!-- End options -->
+    <div class="five columns bottom">
 
+        <!-- Categories -->
+        <h2 class="title bottom-2">Категории <span class="line"></span></h2>
+
+        <ul class="square-list categories bottom">
+            <li><a href="{{ path('unoegohh_shop_category') }}" {% if not category %}class="selected"{% endif %}>Все</a></li>
+            {% for cat in categories %}
+                <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
+            {% endfor %}
+        </ul><!-- End square-list -->
+        <!-- End -->
+    </div>
+    <div class="eleven columns bottom">
+        <h2 class="title bottom-2">Продукция<span class="line"></span></h2>
+        <table>
+            <tr>
+                {% for item in products %}
+                    <td><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}">{{ item.name }}</a></td>
+                    <td><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}" class="button small color">Подробнее</a></td>
+
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
     <div class="clearfix"></div>
 
-    <div class="portfolio">
-
-        <div class="gallery" id="contain">
-
-            {% for item in products %}
-            <!-- item 1 -->
-                <div class="one-third column item element-3 {{ item.getCategoryId().getEngName() }}" data-categories="{{ item.getCategoryId().EngName  }}">
-
-                    <a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}">
-                        <div class="caption">
-                            <img src="{{ item.photos[0].url }}"  class="pic" />
-                            {#<span class="hover-effect zoom"></span>#}
-                    </div><!-- hover effect -->
-                    <h4>{{ item.name }}</h4></a>
-                </div>
-            {% endfor %}
-            <!-- End -->
-
-        </div><!-- End contain-->
-
-    </div><!-- End portfolio -->
 {% endblock %}
