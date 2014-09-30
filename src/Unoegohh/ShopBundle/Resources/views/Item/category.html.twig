@@ -3,24 +3,40 @@
 
     <!-- Page Title -->
 
-    <div class="five columns bottom">
+    <div class="five columns ">
 
         <!-- Categories -->
         <h2 class="title bottom-2">Категории <span class="line"></span></h2>
 
-        <ul class="square-list categories bottom">
-            <li><a href="{{ path('unoegohh_shop_category') }}" {% if not category %}class="selected"{% endif %}>Все</a></li>
-            {% for cat in categories %}
+        {% for cat in categories %}
+
+            <ul class="square-list categories ">
                 <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
-            {% endfor %}
-        </ul><!-- End square-list -->
+            </ul>
+            {% if cat.getChild | length > 0 %}
+                {% for cat in cat.child %}
+                <ul class="minus-list categories" style="margin: 0 0 0 20px">
+                    <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
+                </ul>
+                {% endfor %}
+            {% endif %}
+
+        {% endfor %}
         <!-- End -->
     </div>
     <div class="eleven columns bottom">
         <h2 class="title bottom-2">Продукция<span class="line"></span></h2>
+        <style>
+            table td {
+                vertical-align: middle !important;
+            }
+        </style>
         <table>
                 {% for item in products %}
             <tr>
+                    <td style="width:100px;"><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}">
+                            <img src="{{ item.Photos[0].url }}" alt="" style="width: 100px"/>
+                    </a></td>
                     <td><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}">{{ item.name }}</a></td>
                     <td>{{ item.CategoryId.name }}</td>
                     {#<td><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}" class="button small color">Подробнее</a></td>#}
