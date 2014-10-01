@@ -20,10 +20,10 @@ class ShopController extends Controller
         $category = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->findOneBy(array('engName' => $categoryName));
         $categories = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->getCategoriesMenu();
         if(!$category){
-            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true),array(),15,($currentPage-1)*20);
+            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true),array(),15,($currentPage-1)*15);
             $pages = ceil(count($em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true),array())) /15);
         }else{
-            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array(),15,$currentPage*20);
+            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array(),15,($currentPage-1)*15);
             $pages = ceil(count($em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array())) /15);
         }
         return $this->render('UnoegohhShopBundle:Item:category.html.twig', array(
