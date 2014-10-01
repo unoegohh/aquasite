@@ -21,10 +21,10 @@ class ShopController extends Controller
         $categories = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->getCategoriesMenu();
         if(!$category){
             $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true),array(),15,($currentPage-1)*20);
-            $pages = count($em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true),array()));
+            $pages = ceil(count($em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true),array())) /15);
         }else{
             $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array(),15,$currentPage*20);
-            $pages = count($em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array()));
+            $pages = ceil(count($em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array())) /15);
         }
         return $this->render('UnoegohhShopBundle:Item:category.html.twig', array(
             'category' => $category,
