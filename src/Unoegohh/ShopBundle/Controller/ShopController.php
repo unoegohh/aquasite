@@ -15,18 +15,23 @@ class ShopController extends Controller
     public function indexAction(Request $request, $categoryName = null)
     {
         $em = $this->getDoctrine()->getManager();
+        $currentPage = $request->query->get('page',1);
 
         $category = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->findOneBy(array('engName' => $categoryName));
-        $categories = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->findAll();
+        $categories = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->getCategoriesMenu();
         if(!$category){
-            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true));
+            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true),array(),15,($currentPage-1)*20);
+            $pages = count($em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true),array()));
         }else{
-            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true));
+            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array(),15,$currentPage*20);
+            $pages = count($em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array()));
         }
         return $this->render('UnoegohhShopBundle:Item:category.html.twig', array(
             'category' => $category,
             'categories' => $categories,
-            'products' => $products
+            'products' => $products,
+            'pages' => $pages,
+            'currentPage' => $currentPage
         ));
     }
 

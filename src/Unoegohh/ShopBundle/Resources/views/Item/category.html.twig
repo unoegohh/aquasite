@@ -7,15 +7,27 @@
 
         <!-- Categories -->
         <h2 class="title bottom-2">Категории <span class="line"></span></h2>
-
+        <script>
+            $(function(){
+                $('.without_link').click(function(){
+                    $(this).parent().next().toggle();
+                });
+            });
+        </script>
         {% for cat in categories %}
 
+            {% if cat.getChild | length == 0 %}
             <ul class="square-list categories ">
                 <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
             </ul>
+            {% else %}
+                <ul class="square-list categories ">
+                    <li class="without_link">{{ cat.name }}</li>
+                </ul>
+            {% endif %}
             {% if cat.getChild | length > 0 %}
                 {% for cat in cat.child %}
-                <ul class="minus-list categories" style="margin: 0 0 0 20px">
+                <ul class="minus-list categories" style="margin: 0 0 0 20px; display: none">
                     <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
                 </ul>
                 {% endfor %}
@@ -25,7 +37,11 @@
         <!-- End -->
     </div>
     <div class="eleven columns bottom">
-        <h2 class="title bottom-2">Продукция<span class="line"></span></h2>
+        {% if not category %}
+            <h2 class="title bottom-2">Продукция<span class="line"></span></h2>
+        {% else %}
+            <h2 class="title bottom-2">{{ category.name }}<span class="line"></span></h2>
+        {% endif %}
         <style>
             table td {
                 vertical-align: middle !important;
@@ -44,6 +60,16 @@
             </tr>
                 {% endfor %}
         </table>
+        {% if pages > 1 %}
+            <ul class="pagination color">
+                <li><a>Страница {{ currentPage }} из {{ pages }}</a></li>
+                {% for page in range(1, pages) %}
+                    <li>
+                        <a {% if page == currentPage %} class="current"{% else %}href="?page={{ page }}" class="inactive"{% endif %}>{{ page }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
     <div class="clearfix"></div>
 
