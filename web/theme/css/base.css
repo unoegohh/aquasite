@@ -208,7 +208,7 @@ h1, h2, h3, h4, h5, h6, .services .item a, .services .item.active:hover a, .day,
 
 
 .recent-work .item:hover a, .testimonials .author, .sti-menu li a, ul.team  li p, .lightbox .item:hover a, .portfolio .item:hover a, .about-project p, input.search, #toggle-view li h3.normal, #toggle-view li span.link.normal{
-	color:#868686;
+	color:#333;
 }
 
 h3.title, footer a {
