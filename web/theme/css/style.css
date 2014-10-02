@@ -71,7 +71,7 @@
 
 .title {
 	padding:10px 0 10px 0;
-	border-bottom:1px solid #ececec;
+	border-bottom:1px solid #333;
 	margin:15px 0 15px 0;
 }
 
@@ -196,13 +196,13 @@ header {
 
 h1.page-title {
 	padding:5px 0 10px 0;
-	border-bottom:1px solid #ececec;
+	border-bottom:1px solid #333;
 	margin:12px 0 18px 0;
 }
 
 h2.title {
 	padding:5px 0 10px 0;
-	border-bottom:1px solid #ececec;
+	border-bottom:1px solid #333;
 	margin-bottom:25px;
 }
 
@@ -290,7 +290,7 @@ a.link {
 
 .recent-blog .blog-item {
 	padding-bottom:30px;
-	border-bottom:1px solid #ececec;
+	border-bottom:1px solid #333;
 	margin-bottom:25px;
 }
 
@@ -307,7 +307,7 @@ a.link {
 
 .recent-blog .blog-item.vertical {
 	padding-bottom:20px;
-	border-bottom:1px solid #ececec;
+	border-bottom:1px solid #333;
 	margin-bottom:20px;
 }
 
@@ -404,7 +404,7 @@ a.link {
 input.search {
 	padding:8px 30px 8px 8px;
 	width:86%;
-	border:1px solid #ECECEC;
+	border:1px solid #333;
 	position:relative;
 	display:block;
 }
@@ -523,7 +523,7 @@ ul.team  li:hover img {
 }
 
 ul.team  li h3 {
-	border-bottom: 1px solid #ECECEC;
+	border-bottom: 1px solid #333;
 	padding-bottom:5px;
     margin-bottom: 5px;
 }
@@ -570,7 +570,7 @@ a.twitter, a.facebook, a.skype, a.linkedin {
 
 .job {
 	padding-bottom:13px;
-	border-bottom:1px solid #ECECEC;
+	border-bottom:1px solid #333;
 }
 
 .followers li {
@@ -612,7 +612,7 @@ a.twitter, a.facebook, a.skype, a.linkedin {
 
 
 .comment .title {
-	border-bottom:1px solid #ececec;
+	border-bottom:1px solid #333;
 	margin:0;
 	margin-bottom:10px;
 	line-height:15px;
