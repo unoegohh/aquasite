@@ -199,11 +199,11 @@ body, .post-meta a {
 }
 
 .navigation ul li a, .sti-menu li a h2, .comment a:hover, .form-box label{
-	color:#585858;
+	color:#333;
 }
 
 h1, h2, h3, h4, h5, h6, .services .item a, .services .item.active:hover a, .day, .qoute h2, .welcome p, .js .selectnav, .description p, .use p, .progress-bar h5, #horizontal-tabs ul.tabs li, #vertical-tabs ul.tabs li, .square-list li, .square-list li a, .check-list li, .check-list li a, .plus-list li, .plus-list li a, .arrow-list li, .arrow-list li a, .cross-list li, .cross-list li a, .star-list li, .star-list li a, .minus-list li, .minus-list li a, .arrow2-list li, .arrow2-list li a, .circle-list li, .circle-list li a, table th, #options li a, .most-posts li a:hover, #clock-ticker .block, .tweet_list li a:hover, .under-construction .copyright a:hover {
-	color:#686868;
+	color:#333;
 }
 
 
