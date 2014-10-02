@@ -23,6 +23,11 @@ class Item
     protected $name;
 
     /**
+     * @ORM\Column(type="boolean",nullable=true)
+     */
+    protected $top;
+
+    /**
      * @ORM\Column(type="string", length=65500, nullable=true)
      */
     protected $description;
@@ -152,6 +157,22 @@ class Item
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+
+    /**
+     * @param mixed $top
+     */
+    public function setTop($top)
+    {
+        $this->top = $top;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTop()
+    {
+        return $this->top;
     }
 
 
