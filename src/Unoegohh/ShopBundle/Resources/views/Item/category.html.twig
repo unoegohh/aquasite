@@ -26,11 +26,12 @@
                 </ul>
             {% endif %}
             {% if cat.getChild | length > 0 %}
-                {% for cat in cat.child %}
                 <ul class="minus-list categories" style="margin: 0 0 0 20px; display: none">
-                    <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
+                    {% for cat in cat.child %}
+                        <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
+                    {% endfor %}
                 </ul>
-                {% endfor %}
+
             {% endif %}
 
         {% endfor %}

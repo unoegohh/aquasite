@@ -23,7 +23,7 @@ class CustomerRequest
     protected $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=65500)
      */
     protected $description;
 

@@ -5,3 +5,5 @@ parameters:
     mail_to: 1@gmail.com
     mail_from: 1@gmail.com
     mail_name: 1
+    phone_api: 3de95870-e67a-e1e4-19b3-c9952208a2fb
+    phone:  79166556252
