@@ -44,7 +44,7 @@ class DefaultController extends Controller
 
                 "api_id"		=>	$this->container->getParameter("phone_api"),
                 "to"			=>	$this->container->getParameter("phone"),
-                "text"		=>"TechArtStore Поступил новый заказ! Id =" . $order->getId()
+                "text"		=>"Поступила новая заявка! Id =" . $order->getId()
 
             ));
             $body = curl_exec($ch);
