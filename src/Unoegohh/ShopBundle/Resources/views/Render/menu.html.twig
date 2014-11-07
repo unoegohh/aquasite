@@ -9,15 +9,19 @@
 
 
         {% if item.child.count > 0 %}
-            <ul class="sub">
                 {% for child in item.child %}
                     {% if not child.getShowToUser or child.getShowToUser and usera %}
+                        {% if loop.first %}
+                            <ul class="sub">
+                        {% endif %}
                         <li>
                             <a href="{% if child.staticPage %}/{{ child.staticPage.url }}{% else %}{{ child.url }}{% endif %}">{{ child.name }}</a>
                         </li>
+                            {% if loop.last %}
+                                </ul>
+                                {% endif %}
                     {% endif %}
                 {% endfor %}
-            </ul>
         {% endif %}
     </li>
     {% endfor %}
