@@ -8,7 +8,7 @@
                href="{% if item.staticPage %}/{{ item.staticPage.url }}{% elseif item.url %}{{ item.url }}{% else %}/{% endif %}">{{ item.name }}
             </a>
 
-`           {% set used = false %}
+           {% set used = false %}
             {% if item.child.count > 0 %}
                 {% for child in item.child %}
                     {% if not child.getShowToUser or child.getShowToUser and usera %}
