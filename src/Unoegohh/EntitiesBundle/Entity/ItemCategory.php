@@ -45,6 +45,7 @@ class ItemCategory
 
     /**
      * @ORM\OneToMany(targetEntity="Unoegohh\EntitiesBundle\Entity\ItemCategory", mappedBy="child_id", cascade={"remove", "persist"})
+     * @ORM\OrderBy({"orderNum" = "ASC"})
      **/
     protected $child;
 

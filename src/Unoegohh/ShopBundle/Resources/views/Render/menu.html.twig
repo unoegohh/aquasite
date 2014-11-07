@@ -1,28 +1,31 @@
-
-
 <ul id="nav">
 
     {% set usera = app.getUser() %}
     {% for item in menu %}
 
-    <li><a href="{% if item.staticPage %}/{{ item.staticPage.url }}{% elseif item.url %}{{ item.url }}{% else %}/{% endif %}" >{{ item.name }}</a>
+        <li>
+            <a
+               href="{% if item.staticPage %}/{{ item.staticPage.url }}{% elseif item.url %}{{ item.url }}{% else %}/{% endif %}">{{ item.name }}
+            </a>
 
-
-        {% if item.child.count > 0 %}
+`           {% set used = false %}
+            {% if item.child.count > 0 %}
                 {% for child in item.child %}
                     {% if not child.getShowToUser or child.getShowToUser and usera %}
-                        {% if loop.first %}
+                        {% if not used %}
                             <ul class="sub">
+                            {% set used = true %}
                         {% endif %}
                         <li>
-                            <a href="{% if child.staticPage %}/{{ child.staticPage.url }}{% else %}{{ child.url }}{% endif %}">{{ child.name }}</a>
+                            <a
+                               href="{% if child.staticPage %}/{{ child.staticPage.url }}{% else %}{{ child.url }}{% endif %}">{{ child.name }}</a>
                         </li>
-                            {% if loop.last %}
-                                </ul>
-                                {% endif %}
                     {% endif %}
                 {% endfor %}
-        {% endif %}
-    </li>
+                {% if used %}
+                    </ul>
+                {% endif %}
+            {% endif %}
+        </li>
     {% endfor %}
 </ul>
