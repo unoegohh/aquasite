@@ -11,7 +11,8 @@ class ItemCategoryRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('u');
         $qb
-            ->where($qb->expr()->isNull('u.child_id'));
+            ->where($qb->expr()->isNull('u.child_id'))
+        ->orderBy('u.orderNum');
         return $qb->getQuery()->getResult();
     }
     public function getAllCategoriesWithProducts()
@@ -22,7 +23,8 @@ class ItemCategoryRepository extends EntityRepository
             ->leftJoin("u.child_id", "c")
             ->leftJoin("c.items", "cp")
             ->where($qb->expr()->isNotNull('p.id'))
-            ->orWhere($qb->expr()->isNotNull('cp.id'));
+            ->orWhere($qb->expr()->isNotNull('cp.id'))
+            ->orderBy('u.orderNum');
         return $qb->getQuery()->getResult();
     }
 

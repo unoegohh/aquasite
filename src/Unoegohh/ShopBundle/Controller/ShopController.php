@@ -31,7 +31,8 @@ class ShopController extends Controller
             'categories' => $categories,
             'products' => $products,
             'pages' => $pages,
-            'currentPage' => $currentPage
+            'currentPage' => $currentPage,
+            'catName' => $categoryName
         ));
     }
 
