@@ -4,6 +4,7 @@ namespace Unoegohh\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Unoegohh\AdminBundle\Form\FoodCategoryForm;
 use Unoegohh\AdminBundle\Form\MainBannerForm;
 use Unoegohh\AdminBundle\Form\NewsForm;
@@ -13,6 +14,7 @@ use Unoegohh\EntitiesBundle\Entity\FoodCategory;
 use Doctrine\ORM;
 use Unoegohh\EntitiesBundle\Entity\MainBanner;
 use Unoegohh\EntitiesBundle\Entity\News;
+use Unoegohh\EntitiesBundle\Entity\NewsImage;
 
 class NewsController extends Controller
 {
@@ -87,7 +89,7 @@ class NewsController extends Controller
             return $this->redirect($this->generateUrl('unoegohh_admin_news_edit', array("id" => $cat->getId())));
 
         }
-        return $this->render('UnoegohhAdminBundle:News:edit.html.twig', array('form'=>$form->createView()));
+        return $this->render('UnoegohhAdminBundle:News:edit.html.twig', array('form'=>$form->createView(), 'item' => $cat));
     }
 
     public function removeAction(Request $request, $id)
@@ -128,5 +130,42 @@ class NewsController extends Controller
         );
         return $this->redirect($this->generateUrl('unoegohh_admin_news'));
 
+    }
+    public function imageUploadAction(Request $request, $id){
+
+        $files = $request->files;
+        $service = $this->get('unoegohh.admin_bundle.imgur_upload');
+        foreach ($files as $uploadedFile) {
+            $name = 'name';
+            $item['msg'] = $service->upload($uploadedFile['file']);
+        }
+        $item['error'] ='';
+
+
+        $em = $this->container->get('doctrine')->getManager();
+
+        $foodRepo = $em->getRepository('UnoegohhEntitiesBundle:News');
+        $food = $foodRepo->find($id);
+
+        $photo = new NewsImage();
+        $photo->setItemId($food);
+        $photo->setUrl($item['msg']);
+        $em->persist($photo);
+        $em->flush();
+
+        $item['id'] = $photo->getId();
+        return new JsonResponse($item);
+    }
+
+    public function removeImageAction(Request $request, $id){
+
+        $em = $this->container->get('doctrine')->getManager();
+
+        $foodRepo = $em->getRepository('UnoegohhEntitiesBundle:NewsImage');
+        $food = $foodRepo->find($id);
+        $em->remove($food);
+        $em->flush();
+
+        return new JsonResponse(array("ok"=> true));
     }
 }

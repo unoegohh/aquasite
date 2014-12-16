@@ -37,6 +37,11 @@ class News
     protected $date;
 
     /**
+     * @ORM\OneToMany(targetEntity="Unoegohh\EntitiesBundle\Entity\NewsImage", mappedBy="item_id", cascade={"remove", "persist"})
+     **/
+    protected $photos;
+
+    /**
      * @param mixed $date
      */
     public function setDate($date)
@@ -115,5 +120,22 @@ class News
     {
         return $this->small_descr;
     }
+
+    /**
+     * @param mixed $photos
+     */
+    public function setPhotos($photos)
+    {
+        $this->photos = $photos;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
+    }
+
 
 }
