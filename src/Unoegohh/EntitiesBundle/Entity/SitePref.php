@@ -28,6 +28,27 @@ class SitePref
     protected $logoSize;
 
     /**
+     * @ORM\Column(type="string", nullable=true, length=1024)
+     */
+    protected $contactsText;
+
+    /**
+     * @param mixed $contactsText
+     */
+    public function setContactsText($contactsText)
+    {
+        $this->contactsText = $contactsText;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContactsText()
+    {
+        return $this->contactsText;
+    }
+
+    /**
      * @param mixed $id
      */
     public function setId($id)
