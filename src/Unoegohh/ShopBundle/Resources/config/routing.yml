@@ -50,3 +50,5 @@ unoegohh_shop_contact_sent:
 unoegohh_shop_cash_static_page:
     path:     /{url}
     defaults: { _controller: UnoegohhShopBundle:StaticPage:show}
+    requirements:
+        url: ".*"
