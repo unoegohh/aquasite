@@ -41,12 +41,13 @@ class ShopController extends Controller
         $em = $this->getDoctrine()->getManager();
         $name = $request->query->get('query');
 
-        $page = $request->query->get('page',1);
-        $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->getNamedProducts($name,$page,21);
-        $products['page'] = $page;
+        $categories = $em->getRepository("UnoegohhEntitiesBundle:ItemCategory")->getCategoriesMenu();
+
+        $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->getNamedProducts($name);
         return $this->render('UnoegohhShopBundle:Item:category.html.twig', array(
             'products' => $products,
-            'category' => array('name' => 'Поиск')
+            'categories' => $categories,
+            'category' => array('name' => 'Результаты поиска')
         ));
 
     }

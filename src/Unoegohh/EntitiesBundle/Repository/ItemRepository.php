@@ -46,22 +46,15 @@ class ItemRepository extends EntityRepository
         return $result;
     }
 
-    public function getNamedProducts($name,$page,$limit)
+    public function getNamedProducts($name)
     {
 
         $qb = $this->createQueryBuilder('u');
         $qb
-            ->where($qb->expr()->like('u.name', $qb->expr()->literal('%' . $name . '%')))
-            ->setFirstResult(($page-1)*$limit)
-            ->setMaxResults($limit);
-
-        $result =array();
-        $result['items'] = $qb->getQuery()->getResult();
-
-        $qb = $this->createQueryBuilder('u');
-        $qb->select('Count(u.id)')
             ->where($qb->expr()->like('u.name', $qb->expr()->literal('%' . $name . '%')));
-        $result['total'] = ceil($qb->getQuery()->getSingleScalarResult()/$limit);
+
+        $result = $qb->getQuery()->getResult();
+
         return $result;
     }
 
