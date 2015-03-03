@@ -18,11 +18,11 @@
 
             {% if cat.getChild | length == 0 %}
             <ul class="square-list categories ">
-                <li  style="background-image: url(/theme/images/icons/list-icons/minus.png)"><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
+                <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
             </ul>
             {% else %}
                 <ul class="square-list categories ">
-                    <li class="without_link"  style="background-image: url(/theme/images/icons/list-icons/plus.png)">{{ cat.name }}</li>
+                    <li class="without_link"  >{{ cat.name }}</li>
                 </ul>
             {% endif %}
             {% if cat.getChild | length > 0 %}
@@ -35,7 +35,7 @@
                     {% for cat in cat.child %}
                         {% if cat.getChild | length == 0 %}
                             <ul class="square-list categories ">
-                                <li style="background-image: url(/theme/images/icons/list-icons/plus.png)"><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
+                                <li ><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
                             </ul>
                         {% else %}
                             <ul class="square-list categories ">
