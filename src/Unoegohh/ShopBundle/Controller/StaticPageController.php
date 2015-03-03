@@ -18,8 +18,7 @@ class StaticPageController extends Controller
             throw new NotFoundHttpException("Cтраница не найдена.");
         }
         if($page->getShowToUser() && !$this->getUser()){
-
-            throw new NotFoundHttpException("Cтраница не найдена.");
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
         return $this->render('UnoegohhShopBundle:StaticPage:index.html.twig', array('page' => $page));
