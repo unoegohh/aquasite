@@ -18,11 +18,11 @@
 
             {% if cat.getChild | length == 0 %}
             <ul class="square-list categories ">
-                <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
+                <li  style="background-image: url(/theme/images/icons/list-icons/minus.png)"><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
             </ul>
             {% else %}
                 <ul class="square-list categories ">
-                    <li class="without_link">{{ cat.name }}</li>
+                    <li class="without_link"  style="background-image: url(/theme/images/icons/list-icons/plus.png)">{{ cat.name }}</li>
                 </ul>
             {% endif %}
             {% if cat.getChild | length > 0 %}
@@ -33,7 +33,29 @@
                         style="margin: 0 0 0 20px; display: none"
                     {% endif %}    >
                     {% for cat in cat.child %}
-                        <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
+                        {% if cat.getChild | length == 0 %}
+                            <ul class="square-list categories ">
+                                <li style="background-image: url(/theme/images/icons/list-icons/plus.png)"><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
+                            </ul>
+                        {% else %}
+                            <ul class="square-list categories ">
+                                <li class="without_link">{{ cat.name }}</li>
+                            </ul>
+                        {% endif %}
+                        {% if cat.getChild | length > 0 %}
+                            <ul class="minus-list categories"
+                                    {% if category.getChildId.getId == cat.getId and category.getEngName == catName %}
+                                        style="margin: 0 0 0 20px; display: block"
+                                    {% else %}
+                                        style="margin: 0 0 0 20px; display: none"
+                                    {% endif %}    >
+                                {% for cat in cat.child %}
+                                    <li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+
+                        {% endif %}
+                        {#<li><a href="{{ path('unoegohh_shop_category', {"categoryName" : cat.engName}) }}">{{ cat.name }}</a></li>#}
                     {% endfor %}
                 </ul>
 
