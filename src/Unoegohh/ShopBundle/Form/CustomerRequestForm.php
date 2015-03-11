@@ -14,6 +14,7 @@ class CustomerRequestForm extends AbstractType
             ->add('name')
             ->add('description',"textarea")
             ->add('phone')
+            ->add('manager')
             ->add('town')
             ->add('companyName')
             ->add('email', 'email')

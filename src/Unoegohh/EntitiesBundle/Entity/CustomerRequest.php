@@ -55,6 +55,11 @@ class CustomerRequest
     /**
      * @ORM\Column(type="string", nullable=true)
      */
+    protected $manager;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     protected $password;
 
     /**
@@ -220,6 +225,22 @@ class CustomerRequest
     public function getTown()
     {
         return $this->town;
+    }
+
+    /**
+     * @param mixed $manager
+     */
+    public function setManager($manager)
+    {
+        $this->manager = $manager;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getManager()
+    {
+        return $this->manager;
     }
 
 

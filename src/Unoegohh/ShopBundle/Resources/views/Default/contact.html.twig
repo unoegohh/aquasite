@@ -51,13 +51,17 @@
                         </div><!-- End Box -->
 
                         <div class="form-box">
-                            <label>Город <small>(обязательно)</small></label>
+                            <label>Город <small>(обязательно) <br/> <br/></small></label>
                             {{ form_widget(form.town, {'attr' :{'class' : 'text'}}) }}
                         </div><!-- End Box -->
                         <div class="form-box">
-                            <label>Наименование организации </label>
+                            <label>Наименование организации <br/> <br/> </label>
                             {{ form_widget(form.companyName, {'attr' :{'class' : 'text'}}) }}
                         </div><!-- End Box -->
+                        <div class="form-box last">
+                            <label>Менеджер с которым вы общались </label>
+                            {{ form_widget(form.manager, {'attr' :{'class' : 'text'}}) }}
+                        </div>
 
                         <div class="form-box big">
                             <label>Сообщение <small>(обязательно)</small> </label>
