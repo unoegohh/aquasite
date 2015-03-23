@@ -158,6 +158,10 @@ unoegohh_admin_user_remove:
     path:     /user/remove/{id}
     defaults: { _controller: UnoegohhAdminBundle:User:remove }
 
+unoegohh_admin_user_password:
+    path:     /user/password/{id}
+    defaults: { _controller: UnoegohhAdminBundle:User:changePassword }
+
 unoegohh_admin_user_remove_ok:
     path:     /user/remove/{id}/ok
     defaults: { _controller: UnoegohhAdminBundle:User:removeOk }

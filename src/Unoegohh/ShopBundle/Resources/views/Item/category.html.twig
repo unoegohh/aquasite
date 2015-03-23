@@ -92,9 +92,13 @@
         <table>
                 {% for item in products %}
             <tr>
-                    <td style="width:100px;"><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}">
-                            <img src="{{ item.Photos[0].url }}" alt="" style="width: 100px"/>
-                    </a></td>
+                    <td style="width:100px;">
+                        {% if item.Photos[0].url %}
+                            <a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}">
+                                <img src="{{ item.Photos[0].url }}" alt="" style="width: 100px"/>
+                            </a>
+                        {% endif %}
+                    </td>
                     <td><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}">{{ item.name }}</a></td>
                     {#<td><a href="{{ path("unoegohh_shop_item", {"id" : item.id}) }}" class="button small color">Подробнее</a></td>#}
 

@@ -24,7 +24,8 @@ class ItemRepository extends EntityRepository
         }
         $qb
         ->setFirstResult(($page-1)*$limit)
-        ->setMaxResults($limit);
+        ->setMaxResults($limit)
+        ->orderBy("u.itemOrder");
 
         $result =array();
         $result['items'] = $qb->getQuery()->getResult();

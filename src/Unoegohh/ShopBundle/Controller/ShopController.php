@@ -23,7 +23,7 @@ class ShopController extends Controller
             $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('active' => true, 'top' => true));
             $pages = 1;
         }else{
-            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array(),15,($currentPage-1)*15);
+            $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array("itemOrder" => "ASC"),15,($currentPage-1)*15);
             $pages = ceil(count($em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array('category_id' => $category, 'active' => true),array())) /15);
         }
         return $this->render('UnoegohhShopBundle:Item:category.html.twig', array(

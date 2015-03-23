@@ -49,6 +49,7 @@
                             <td>{% if i.enabled %}<i class="fa fa-check text-success"></i>{% else %}<i class="fa fa-times text-danger"></i>{% endif %}</td>
                             <td class="text-center">
                                 <div class="btn-group">
+                                    <a href="{{ path("unoegohh_admin_user_password", {"id": i.id}) }}" data-toggle="tooltip" title="" class="btn btn-xs btn-default" data-original-title="Смена пароля"><i class="fa fa-user"></i></a>
                                     <a href="{{ path("unoegohh_admin_user_edit", {"id": i.id}) }}" data-toggle="tooltip" title="" class="btn btn-xs btn-default" data-original-title="Редактирование"><i class="fa fa-pencil"></i></a>
                                     <a href="{{ path("unoegohh_admin_user_remove", {"id": i.id}) }}" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" data-original-title="Удаление"><i class="fa fa-times"></i></a>
                                 </div>

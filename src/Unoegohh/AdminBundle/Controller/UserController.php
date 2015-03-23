@@ -12,6 +12,7 @@ use Doctrine\ORM;
 use Unoegohh\AdminBundle\Form\UserForm;
 use Unoegohh\EntitiesBundle\Entity\StaticPage;
 use Unoegohh\UserBundle\Entity\User;
+use FOS\UserBundle\Doctrine\UserManager;
 
 class UserController extends Controller
 {
@@ -63,6 +64,27 @@ class UserController extends Controller
         return $this->render('UnoegohhAdminBundle:User:remove.html.twig', array('item'=>$id));
     }
 
+    public function changePasswordAction(Request $request, User  $id)
+    {
+        $name = $request->query->get('pass');
+        $em = $this->container->get('doctrine')->getManager();
+
+        if($name){
+
+            /* @var $userManager UserManager */
+            $userManager = $this->container->get('fos_user.user_manager');
+            $id->setPlainPassword($name);
+
+            $userManager->updateUser($id, true);
+            $this->get('session')->getFlashBag()->add(
+                'notice',
+                'Пользователь обновлен'
+            );
+            return $this->redirect($this->generateUrl('unoegohh_admin_user'));
+        }
+
+        return $this->render('UnoegohhAdminBundle:User:changePassword.html.twig', array('item'=>$id));
+    }
     public function removeOkAction(Request $request, User $id)
     {
         /*

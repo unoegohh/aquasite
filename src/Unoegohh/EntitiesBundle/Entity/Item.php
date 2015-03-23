@@ -28,6 +28,11 @@ class Item
     protected $top;
 
     /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    protected $itemOrder;
+
+    /**
      * @ORM\Column(type="string", length=65500, nullable=true)
      */
     protected $description;
@@ -173,6 +178,22 @@ class Item
     public function getTop()
     {
         return $this->top;
+    }
+
+    /**
+     * @param mixed $itemOrder
+     */
+    public function setItemOrder($itemOrder)
+    {
+        $this->itemOrder = $itemOrder;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemOrder()
+    {
+        return $this->itemOrder;
     }
 
 
