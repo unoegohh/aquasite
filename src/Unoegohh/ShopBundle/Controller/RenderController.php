@@ -12,6 +12,12 @@ class RenderController extends Controller
         $menu = $em->getRepository("UnoegohhEntitiesBundle:MenuItem")->getMainMenu($this->getUser());
         return $this->render('UnoegohhShopBundle:Render:menu.html.twig', array('menu' => $menu));
     }
+    public function imagesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $menu = $em->getRepository("UnoegohhEntitiesBundle:BottomImage")->FindBy(array(), array("itemOrder"=>"ASC"));
+        return $this->render('UnoegohhShopBundle:Render:bottomImages.html.twig', array('items' => $menu));
+    }
 //    public function categoriesAction($name)
 //    {
 //        $em = $this->getDoctrine()->getManager();

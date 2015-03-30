@@ -195,3 +195,24 @@ unoegohh_admin_news_photo_add:
 unoegohh_admin_news_photo_remove:
     path:     /news/photo/remove/{id}
     defaults: { _controller: UnoegohhAdminBundle:News:removeImage }
+
+# bottom images
+unoegohh_admin_bottom_images:
+    path:     /bottom_images
+    defaults: { _controller: UnoegohhAdminBundle:BottomImage:index }
+
+unoegohh_admin_bottom_images_create:
+    path:     /bottom_images/create
+    defaults: { _controller: UnoegohhAdminBundle:BottomImage:create }
+
+unoegohh_admin_bottom_images_edit:
+    path:     /bottom_images/edit/{id}
+    defaults: { _controller: UnoegohhAdminBundle:BottomImage:edit }
+
+unoegohh_admin_bottom_images_remove:
+    path:     /bottom_images/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:BottomImage:remove }
+
+unoegohh_admin_bottom_images_remove_ok:
+    path:     /bottom_images/remove/{id}/ok
+    defaults: { _controller: UnoegohhAdminBundle:BottomImage:removeOk }

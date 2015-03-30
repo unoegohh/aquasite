@@ -1,0 +1,9 @@
+{% for item in items %}
+
+    <li>
+        <a href="#">
+            <img {% if item.active %}class="small-image"{% endif %} src="{{ item.image }}" alt="" />
+        </a>
+    </li>
+{% endfor %}
+
