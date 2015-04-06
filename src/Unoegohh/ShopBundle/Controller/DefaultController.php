@@ -15,7 +15,7 @@ class DefaultController extends Controller
 
         $banners  = $em->getRepository("UnoegohhEntitiesBundle:MainBanner")->findBy(array('active' => true), array('orderNum' => 'ASC'));
         $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array());
-        $news = $em->getRepository("UnoegohhEntitiesBundle:News")->findBy(array(), array(), 4);
+        $news = $em->getRepository("UnoegohhEntitiesBundle:News")->findBy(array(), array('id' => "DESC"), 4);
 //        return $this->render('UnoegohhShopBundle:New:index.html.twig');
 
         return $this->render('UnoegohhShopBundle:Default:index.html.twig', array(
