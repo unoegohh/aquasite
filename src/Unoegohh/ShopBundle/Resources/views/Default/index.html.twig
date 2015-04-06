@@ -161,11 +161,10 @@
                 <div class="flexslider">
                     <ul class="slides">
                         {% for banner in banners %}
-                        <li>
+                        <li style="background: url({{ banner.getImageUrl }});  height: 364px;">
                             {% if banner.url %}
-                                <a href="#">
+                                <a href="#" style="display: block;  height: 364px;">
                             {% endif %}
-                            <img src="{{ banner.getImageUrl }}">
                             {% if banner.url %}
                                 </a>
                             {% endif %}
