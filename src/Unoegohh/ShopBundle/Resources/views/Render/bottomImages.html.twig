@@ -1,10 +1,8 @@
 {% for item in items %}
-    <li>
-        <a href="{% if item.url %}{{ item.url }}{% else %}#{% endif %}" {% if item.toTheRight %}style="position: absolute;
-  top: 30px;
-  right: -110px;"{% endif %}>
+    <li {% if item.toTheRight %}class="toRight" {% endif %}>
+        <a href="{% if item.url %}{{ item.url }}{% else %}#{% endif %}" >
             <img {% if item.active %}class="small-image"{% endif %} src="{{ item.image }}" alt="" />
         </a>
     </li>
 {% endfor %}
-
+<li class="clearfix" style="float:none"></li>

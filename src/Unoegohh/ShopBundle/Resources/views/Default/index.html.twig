@@ -55,6 +55,16 @@
 
 
 
+    <style>
+        .toRight{
+            position: absolute;
+            top: 30px;
+            right: -330px;width:300px
+        }
+        .toRight img {
+            display: inline !important;
+        }
+    </style>
     <script>
         $(function(){
             function getNames(r){
@@ -389,10 +399,8 @@
 
             {{ render(controller('UnoegohhShopBundle:Render:images')) }}
 
-            {#<li><a href="#"><img src="/logos/interpump.png" alt="" /></a></li>#}
-            {#<li><a href="#"><img src="/logos/IPC.png" alt="" /></a></li>#}
         </ul><!-- End items -->
-
+        <div class="clearfix"></div>
     </div>
 
 
