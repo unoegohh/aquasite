@@ -357,7 +357,7 @@
                                             {10} Окт|
                                             {11} Ноя|
                                             {12} Дек|
-                                        {% endtranschoice %}v
+                                        {% endtranschoice %}
                                 </span></div>
                                 <h3><a href="{{ path("unoegohh_shop_news_item", {'id': item.id}) }}">{{ item.name }}</a></h3>
                                 <p>{{ item.smallDescr }}</p>
@@ -385,7 +385,7 @@
 <div class="clients clearfix">
 
     <div class="sixteen columns">
-        <ul class="items" style="text-align: justify">
+        <ul class="items" style="text-align: justify;position:relative; overflow: visible">
 
             {{ render(controller('UnoegohhShopBundle:Render:images')) }}
 

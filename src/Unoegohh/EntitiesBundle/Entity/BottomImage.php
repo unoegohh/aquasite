@@ -21,6 +21,15 @@ class BottomImage
      * @ORM\Column(type="string")
      */
     protected $name;
+    /**
+     * @ORM\Column(type="boolean",nullable=true)
+     */
+    protected $toTheRight;
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    protected $url;
 
     /**
      * @ORM\Column(type="integer",nullable=true)
@@ -115,6 +124,38 @@ class BottomImage
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param mixed $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param mixed $toTheRight
+     */
+    public function setToTheRight($toTheRight)
+    {
+        $this->toTheRight = $toTheRight;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToTheRight()
+    {
+        return $this->toTheRight;
     }
 
 

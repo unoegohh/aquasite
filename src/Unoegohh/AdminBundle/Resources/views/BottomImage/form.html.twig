@@ -23,6 +23,20 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Снести картинку вправо</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.toTheRight) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Ссылка куда ведет картинка</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
         <label class="col-md-3 control-label" for="example-hf-password">Добавить класс для мленьких картинок</label>
 
         <div class="col-md-9">

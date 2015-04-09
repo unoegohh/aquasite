@@ -30,6 +30,19 @@ class BottomImageController extends Controller
         return $this->render('UnoegohhAdminBundle:BottomImage:index.html.twig', array('items'=>$banners));
     }
 
+    public function index2Action(Request $request)
+    {
+        /*
+         * @var $em EntityManager
+         */
+        $em = $this->container->get('doctrine')->getManager();
+
+        $bannerRepo = $em->getRepository('UnoegohhEntitiesBundle:BottomImage');
+
+        $banners = $bannerRepo->findAll();
+
+        return $this->render('UnoegohhAdminBundle:BottomImage:index2.html.twig', array('items'=>$banners));
+    }
     public function createAction(Request $request)
     {
         /*

@@ -15,6 +15,8 @@ class BottomImageForm extends AbstractType
             ->add('itemOrder')
             ->add('image')
             ->add('active')
+            ->add('url')
+            ->add('toTheRight')
         ;
     }
 

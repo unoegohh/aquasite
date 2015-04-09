@@ -197,6 +197,10 @@ unoegohh_admin_news_photo_remove:
     defaults: { _controller: UnoegohhAdminBundle:News:removeImage }
 
 # bottom images
+unoegohh_admin_bottom_images2:
+    path:     /bottom_images2
+    defaults: { _controller: UnoegohhAdminBundle:BottomImage:index2 }
+
 unoegohh_admin_bottom_images:
     path:     /bottom_images
     defaults: { _controller: UnoegohhAdminBundle:BottomImage:index }
