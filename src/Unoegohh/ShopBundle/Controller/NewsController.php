@@ -17,7 +17,7 @@ class NewsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $items = $em->getRepository("UnoegohhEntitiesBundle:News")->findAll();
+        $items = $em->getRepository("UnoegohhEntitiesBundle:News")->findBy(array(), array('id' => 'desc'));
         return $this->render('UnoegohhShopBundle:News:list.html.twig', array(
             'data' => $items,
         ));
